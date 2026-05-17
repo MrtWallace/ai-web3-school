@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+venv/
+.env
+
+# Build artifacts
+dist/
+build/
+artifacts/
+cache/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Secrets
+*.pem
+*.key
+.env.local
+.env.*.local
