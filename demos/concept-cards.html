@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI × Web3 概念卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.2);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+        .ai { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
+        .web3 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .cross { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        .card-content {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        .card-content ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .card-content li {
+            margin-bottom: 8px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 15px;
+            margin-right: 8px;
+        }
+        .tag-ai { background: rgba(0, 210, 255, 0.2); color: #00d2ff; }
+        .tag-web3 { background: rgba(240, 147, 251, 0.2); color: #f093fb; }
+        .tag-cross { background: rgba(79, 172, 254, 0.2); color: #4facfe; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .stat {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI × Web3 概念卡片</h1>
+        <p class="subtitle">Week 1 学习成果 — 核心概念速览</p>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" style="color: #00d2ff;">8</div>
+                <div class="stat-label">AI 概念</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" style="color: #f093fb;">6</div>
+                <div class="stat-label">Web3 概念</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" style="color: #4facfe;">3</div>
+                <div class="stat-label">交叉方向</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" style="color: #00f2fe;">1</div>
+                <div class="stat-label">实战项目</div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ai">🤖</div>
+                    <div class="card-title">LLM</div>
+                </div>
+                <div class="card-content">
+                    基于 Transformer 的神经网络，通过海量文本训练，学习语言模式。
+                    <ul>
+                        <li>擅长：语言理解、代码生成、推理</li>
+                        <li>不擅长：精确事实记忆、确定性计算</li>
+                    </ul>
+                    <span class="tag tag-ai">AI 基础</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ai">💬</div>
+                    <div class="card-title">Prompt</div>
+                </div>
+                <div class="card-content">
+                    输入给 LLM 的文本，引导模型生成特定输出。
+                    <ul>
+                        <li>上下文窗口：工作内存</li>
+                        <li>系统指令：身份和边界</li>
+                        <li>提示词：任务意图</li>
+                        <li>工具调用：从说话到做事</li>
+                    </ul>
+                    <span class="tag tag-ai">AI 基础</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ai">⚙️</div>
+                    <div class="card-title">Workflow</div>
+                </div>
+                <div class="card-content">
+                    预定义的任务流程，模型是其中一个节点。
+                    <ul>
+                        <li>特点：路径固定、可复现、可调试</li>
+                        <li>适用：流程固定、需要一致性的任务</li>
+                    </ul>
+                    <span class="tag tag-ai">AI 进阶</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ai">🧠</div>
+                    <div class="card-title">Agent</div>
+                </div>
+                <div class="card-content">
+                    模型自主规划、动态调用工具、跨轮管理状态。
+                    <ul>
+                        <li>状态管理、长期记忆、MCP</li>
+                        <li>Skills、Tool Calling、Tracing</li>
+                        <li>Guardrails、Handoff、错误恢复</li>
+                    </ul>
+                    <span class="tag tag-ai">AI 核心</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon web3">👛</div>
+                    <div class="card-title">钱包</div>
+                </div>
+                <div class="card-content">
+                    管理私钥的工具，不是"存放"资产的地方。
+                    <ul>
+                        <li>助记词 → 私钥 → 地址</li>
+                        <li>私钥 = 资产控制权</li>
+                        <li>泄露 = 资产丢失</li>
+                    </ul>
+                    <span class="tag tag-web3">Web3 基础</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon web3">✍️</div>
+                    <div class="card-title">签名</div>
+                </div>
+                <div class="card-content">
+                    授权一个具体动作，不是"点一下确认"。
+                    <ul>
+                        <li>签名 = 授权</li>
+                        <li>交易 = 执行</li>
+                        <li>不可逆、不可篡改</li>
+                    </ul>
+                    <span class="tag tag-web3">Web3 基础</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon web3">⛽</div>
+                    <div class="card-title">Gas</div>
+                </div>
+                <div class="card-content">
+                    链上执行的计算资源定价。
+                    <ul>
+                        <li>防止滥用、激励矿工</li>
+                        <li>失败也会消耗</li>
+                        <li>价格由市场决定</li>
+                    </ul>
+                    <span class="tag tag-web3">Web3 基础</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon web3">📜</div>
+                    <div class="card-title">智能合约</div>
+                </div>
+                <div class="card-content">
+                    部署在链上的程序，自动执行预定义逻辑。
+                    <ul>
+                        <li>状态公开、执行公开</li>
+                        <li>升级权限可检查</li>
+                        <li>与后端的区别：无法随意修改</li>
+                    </ul>
+                    <span class="tag tag-web3">Web3 核心</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon cross">🔗</div>
+                    <div class="card-title">账户抽象</div>
+                </div>
+                <div class="card-content">
+                    让 AI Agent 可以管理智能账户。
+                    <ul>
+                        <li>ERC-4337 标准</li>
+                        <li>Session Key 限制权限</li>
+                        <li>社交恢复、邮件恢复</li>
+                    </ul>
+                    <span class="tag tag-cross">AI × Web3</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon cross">🛡️</div>
+                    <div class="card-title">Guardrails</div>
+                </div>
+                <div class="card-content">
+                    防止 AI Agent 越权操作。
+                    <ul>
+                        <li>黑名单检查</li>
+                        <li>阈值确认</li>
+                        <li>Human-in-the-loop</li>
+                    </ul>
+                    <span class="tag tag-cross">AI × Web3</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon cross">🎯</div>
+                    <div class="card-title">Sentinel</div>
+                </div>
+                <div class="card-content">
+                    自然语言驱动 DeFi 操作的完整实现。
+                    <ul>
+                        <li>DeepSeek 意图解析</li>
+                        <li>链上 Guardrails</li>
+                        <li>Sepolia 测试网部署</li>
+                    </ul>
+                    <span class="tag tag-cross">实战项目</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ai">⚠️</div>
+                    <div class="card-title">AI 输出验证</div>
+                </div>
+                <div class="card-content">
+                    5 大风险必须验证。
+                    <ul>
+                        <li>事实错误：自信编造</li>
+                        <li>引用错误：编造链接</li>
+                        <li>推理漂移：逻辑断裂</li>
+                        <li>执行越权：超出授权</li>
+                        <li>工具误用：错误参数</li>
+                    </ul>
+                    <span class="tag tag-ai">AI 安全</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>AI × Web3 School — Week 1 学习成果</p>
+            <p>MrtWallace · 2026-05-17</p>
+        </div>
+    </div>
+</body>
+</html>
