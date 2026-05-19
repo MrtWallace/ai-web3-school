@@ -110,9 +110,9 @@
         }
         
         /* Card with Flip Effect */
-        .card-wrapper {
+.card-wrapper {
             perspective: 1000px;
-            height: 280px;
+            height: 320px;
         }
         .card {
             position: relative;
@@ -131,9 +131,11 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            overflow-x: hidden;
         }
         .card-front {
             background: rgba(255, 255, 255, 0.05);
@@ -143,7 +145,6 @@
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
         .card:hover .card-front {
             border-color: rgba(0, 210, 255, 0.5);
@@ -153,44 +154,44 @@
         .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            font-size: 1.5em;
+            margin-right: 12px;
+            font-size: 1.3em;
         }
         .ai { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
         .web3 { background: linear-gradient(135deg, #f093fb, #f5576c); }
         .cross { background: linear-gradient(135deg, #4facfe, #00f2fe); }
         .card-title {
-            font-size: 1.3em;
+            font-size: 1.2em;
             font-weight: 600;
         }
         .card-content {
             color: #ccc;
-            line-height: 1.6;
-            font-size: 0.95em;
+            line-height: 1.5;
+            font-size: 0.9em;
         }
         .card-content ul {
-            margin-top: 10px;
-            padding-left: 20px;
+            margin-top: 8px;
+            padding-left: 18px;
         }
         .card-content li {
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         .tag {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 20px;
-            font-size: 0.8em;
-            margin-top: 15px;
-            margin-right: 8px;
+            font-size: 0.75em;
+            margin-top: 10px;
+            margin-right: 6px;
         }
         .tag-ai { background: rgba(0, 210, 255, 0.2); color: #00d2ff; }
         .tag-web3 { background: rgba(240, 147, 251, 0.2); color: #f093fb; }
@@ -198,26 +199,30 @@
         
         /* Back card content */
         .back-title {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #00d2ff;
+            flex-shrink: 0;
         }
         .back-content {
             color: #ccc;
-            line-height: 1.8;
-            font-size: 0.95em;
+            line-height: 1.5;
+            font-size: 0.85em;
+            flex: 1;
         }
         .back-example {
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 10px;
+            padding: 8px;
             background: rgba(0,0,0,0.3);
             border-radius: 8px;
             font-family: monospace;
-            font-size: 0.85em;
+            font-size: 0.78em;
             color: #4facfe;
+            flex-shrink: 0;
+            word-break: break-all;
         }
-        .flip-hint {
+                .flip-hint {
             position: absolute;
             bottom: 10px;
             right: 15px;
