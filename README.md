@@ -1,71 +1,65 @@
-# AI × Web3 School — 学习记录
+# AI × Web3 School — 学习仓库
 
-> **学员**: Mr Wallace  
-> **目标**: 深入 AI × Web3 交叉方向，构建可展示的深度项目  
-> **投入**: 8-15h/周  
-> **起点**: 已有 Sentinel 项目经验（AI Agent for DeFi，Sepolia 部署）
+> **学员**: Mr Wallace | **编号**: #3752
+> **GitHub**: [MrtWallace](https://github.com/MrtWallace)
+> **WCB**: [web3career.build](https://web3career.build/zh/programs/AI-Web3-School)
+> **Handbook**: [aiweb3.school/zh/handbook](https://aiweb3.school/zh/handbook/)
+> **Learning Agent**: Hermes Agent (mimo-v2.5-pro)
+
+## 📌 课程简介
+
+AI × Web3 School 由 LXDAO 与 ETHPanda 联合发起，Z.AI 领衔赞助，Cobo 联合赞助。聚焦 AI Agent 与 Web3 的真实交叉问题：模型能力、工具调用、钱包、签名、支付、身份、权限、安全执行、治理协作和可验证记录。
+
+## 🗂 目录结构
+
+```
+profile.md              # 学员画像
+learning-plan.md        # 个人学习计划
+daily/                  # 每日学习记录
+tasks/                  # 任务完成记录
+experiments/            # 交叉实验
+handbook-feedback/      # Handbook 反馈
+hackathon/              # Hackathon 项目
+submissions/            # 提交材料
+templates/              # 日记和任务模板
+```
+
+## 📊 进度追踪
+
+### Week 1（5/17 - 5/23）
+
+**已提交 (8/37, ~115pts)**:
+- [x] 参加开营仪式 (20pts)
+- [x] 发布 X 起点 (10pts)
+- [x] 加入社群 + 自我介绍 (10pts)
+- [x] 完成课程工具准备 (10pts)
+- [x] 创建 GitHub repo (10pts)
+- [x] 完成 PoW 提交测试 (5pts)
+- [x] 5.18 AI 时代的 Web3 架构能力 (20pts)
+- [x] 5.19 AI Agent 入门：Hermes (20pts)
+
+**核心任务 — 待提交**:
+- [ ] AI 基础概念卡片 (10pts)
+- [ ] Learning Agent Setup (20pts)
+- [ ] AI 可交互学习产物 (30pts)
+- [ ] Web3 基础概念卡片 (10pts)
+- [ ] 测试网交易 (20pts)
+- [ ] 部署/调用最小合约 (30pts)
+- [ ] EOA vs 智能账户 vs 多签对比 (30pts)
+- [ ] AI×Web3 交叉流程图 (30pts)
+- [ ] Proof-of-Wark Pack (40pts)
+- [ ] 受限 Web3 助手设计 (40pts)
+- [ ] 发布学习总结 (20pts)
+- [ ] 拆解 AI×Web3 项目 (30pts)
+- [ ] 行业信息流关注清单 (20pts)
+
+## ⚠️ 隐私提醒
+
+本仓库为 **public**，请勿放入：
+- 私钥、助记词、API Key、token
+- .env 文件或敏感配置
+- 未公开的联系方式或内部链接
 
 ---
 
-## 📋 学习目标
-
-- [ ] 深入理解 AI × Web3 交叉方向的技术栈和架构模式
-- [ ] 完成 Week 1-4 全部交付物
-- [ ] 建立系统化的行业观察和信息源
-- [ ] 最终产出一个可展示的深度项目
-
-## 🏗 已有项目基础
-
-**[Sentinel](https://github.com/MrtWallace/sentinel)** — AI Agent for DeFi Operations
-- 自然语言 → DeepSeek 意图解析 → Uniswap V3 swap / ETH 转账
-- 链上 Guardrails（黑名单 + 每日限额）
-- SmartAccount.sol 部署在 Sepolia
-- Scaffold-ETH 2 前端 Dashboard
-
-## 📅 进度追踪
-
-### Week 1：AI 与 Web3 基础知识
-- [ ] Learning Agent 配置完成
-- [ ] GitHub Repo 创建并结构化
-- [ ] 基础概念说明（LLM/workflow/agent/钱包/签名/交易/合约）
-- [ ] 交叉实验说明（Sentinel workflow 拆解）
-- [ ] 高级 A — Prompt vs Workflow vs Agent 对比
-- [ ] 高级 B — Foundry vs Hardhat + 权限设计
-- [ ] 高级 D — EVM/Gas/共识 理论笔记
-- [ ] 行业观察 Follow List
-
-### Week 2：支付、身份、权限、安全隐私、治理协作
-- [ ] 待定
-
-### Week 3：AI 应用开发 + 数据层
-- [ ] 待定
-
-### Week 4：项目整合 + Hackathon 准备
-- [ ] 待定
-
-## 📁 Repo 结构
-
-```
-ai-web3-school/
-├── README.md              # 本文件
-├── notes/                 # 每周学习笔记
-├── prompts/               # Prompt 记录
-├── demos/                 # 可交互产物
-├── experiments/           # 交叉实验
-├── logs/                  # Agent 使用日志
-├── resources.md           # 资源收集
-└── week1/
-    ├── concepts.md        # 基础概念说明
-    ├── web3-lab/          # 测试网实践记录
-    ├── cross-experiment/  # 交叉实验
-    └── advanced/          # 高级轨道产出
-```
-
-## 🔗 关键链接
-
-- [Sentinel 项目](https://github.com/MrtWallace/sentinel)
-- [AI × Web3 School 学习配置](https://github.com/MrtWallace/ai-web3-school-learning-agent)
-
----
-
-> **Last updated**: 2026-05-17
+> **Last updated**: 2026-05-19
