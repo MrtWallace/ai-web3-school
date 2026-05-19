@@ -23,7 +23,7 @@
         }
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             font-size: 2.5em;
             background: linear-gradient(90deg, #00d2ff, #3a7bd5);
             -webkit-background-clip: text;
@@ -32,29 +32,124 @@
         .subtitle {
             text-align: center;
             color: #888;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 1.1em;
         }
+        
+        /* Search and Filter */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .search-box {
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1em;
+            width: 300px;
+            backdrop-filter: blur(10px);
+        }
+        .search-box::placeholder {
+            color: #888;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #00d2ff;
+            box-shadow: 0 0 20px rgba(0,210,255,0.3);
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(0,210,255,0.3);
+            border-color: #00d2ff;
+            color: #fff;
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .stat {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        /* Card Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
+        
+        /* Card with Flip Effect */
+        .card-wrapper {
+            perspective: 1000px;
+            height: 280px;
+        }
         .card {
-            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
             border-radius: 15px;
             padding: 25px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
         }
-        .card:hover {
-            transform: translateY(-5px);
+        .card-front {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .card-back {
             background: rgba(255, 255, 255, 0.1);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card:hover .card-front {
             border-color: rgba(0, 210, 255, 0.5);
             box-shadow: 0 10px 40px rgba(0, 210, 255, 0.2);
         }
+        
         .card-header {
             display: flex;
             align-items: center;
@@ -100,34 +195,45 @@
         .tag-ai { background: rgba(0, 210, 255, 0.2); color: #00d2ff; }
         .tag-web3 { background: rgba(240, 147, 251, 0.2); color: #f093fb; }
         .tag-cross { background: rgba(79, 172, 254, 0.2); color: #4facfe; }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 40px;
+        
+        /* Back card content */
+        .back-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #00d2ff;
         }
-        .stat {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .back-content {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 0.95em;
         }
-        .stat-value {
-            font-size: 2em;
-            font-weight: 700;
-            margin-bottom: 5px;
+        .back-example {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85em;
+            color: #4facfe;
         }
-        .stat-label {
-            color: #888;
-            font-size: 0.9em;
+        .flip-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.75em;
+            color: #666;
         }
+        
+        /* Footer */
         .footer {
             text-align: center;
             margin-top: 50px;
             color: #666;
             font-size: 0.9em;
         }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .stats {
                 grid-template-columns: repeat(2, 1fr);
@@ -135,232 +241,526 @@
             h1 {
                 font-size: 1.8em;
             }
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            .search-box {
+                width: 100%;
+            }
+        }
+        
+        /* Hidden class for filtering */
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>AI × Web3 概念卡片</h1>
-        <p class="subtitle">Week 1 学习成果 — 核心概念速览</p>
+        <p class="subtitle">Week 1 学习成果 — 点击卡片翻转查看详细解释</p>
+        
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="🔍 搜索概念..." id="searchInput">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="ai">AI</button>
+            <button class="filter-btn" data-filter="web3">Web3</button>
+            <button class="filter-btn" data-filter="cross">AI × Web3</button>
+        </div>
         
         <div class="stats">
             <div class="stat">
-                <div class="stat-value" style="color: #00d2ff;">8</div>
+                <div class="stat-value" style="color: #00d2ff;" id="aiCount">5</div>
                 <div class="stat-label">AI 概念</div>
             </div>
             <div class="stat">
-                <div class="stat-value" style="color: #f093fb;">6</div>
+                <div class="stat-value" style="color: #f093fb;" id="web3Count">4</div>
                 <div class="stat-label">Web3 概念</div>
             </div>
             <div class="stat">
-                <div class="stat-value" style="color: #4facfe;">3</div>
+                <div class="stat-value" style="color: #4facfe;" id="crossCount">3</div>
                 <div class="stat-label">交叉方向</div>
             </div>
             <div class="stat">
-                <div class="stat-value" style="color: #00f2fe;">1</div>
-                <div class="stat-label">实战项目</div>
+                <div class="stat-value" style="color: #00f2fe;" id="totalCount">12</div>
+                <div class="stat-label">总计</div>
             </div>
         </div>
         
-        <div class="grid">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon ai">🤖</div>
-                    <div class="card-title">LLM</div>
-                </div>
-                <div class="card-content">
-                    基于 Transformer 的神经网络，通过海量文本训练，学习语言模式。
-                    <ul>
-                        <li>擅长：语言理解、代码生成、推理</li>
-                        <li>不擅长：精确事实记忆、确定性计算</li>
-                    </ul>
-                    <span class="tag tag-ai">AI 基础</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon ai">💬</div>
-                    <div class="card-title">Prompt</div>
-                </div>
-                <div class="card-content">
-                    输入给 LLM 的文本，引导模型生成特定输出。
-                    <ul>
-                        <li>上下文窗口：工作内存</li>
-                        <li>系统指令：身份和边界</li>
-                        <li>提示词：任务意图</li>
-                        <li>工具调用：从说话到做事</li>
-                    </ul>
-                    <span class="tag tag-ai">AI 基础</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon ai">⚙️</div>
-                    <div class="card-title">Workflow</div>
-                </div>
-                <div class="card-content">
-                    预定义的任务流程，模型是其中一个节点。
-                    <ul>
-                        <li>特点：路径固定、可复现、可调试</li>
-                        <li>适用：流程固定、需要一致性的任务</li>
-                    </ul>
-                    <span class="tag tag-ai">AI 进阶</span>
+        <div class="grid" id="cardGrid">
+            <!-- AI Cards -->
+            <div class="card-wrapper" data-category="ai" data-keywords="llm 大语言模型 transformer 神经网络 deepseek gpt">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon ai">🤖</div>
+                            <div class="card-title">LLM</div>
+                        </div>
+                        <div class="card-content">
+                            基于 Transformer 的神经网络，通过海量文本训练，学习语言模式。
+                            <ul>
+                                <li>擅长：语言理解、代码生成、推理</li>
+                                <li>不擅长：精确事实记忆、确定性计算</li>
+                            </ul>
+                            <span class="tag tag-ai">AI 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">LLM 工作原理</div>
+                        <div class="back-content">
+                            LLM 通过预测下一个 token 来生成文本。给定上下文，它计算所有可能 token 的概率分布，然后采样。
+                            <br><br>
+                            <strong>关键参数：</strong><br>
+                            • temperature：控制随机性（0=确定，1=创意）<br>
+                            • max_tokens：最大输出长度<br>
+                            • top_p：核采样阈值
+                        </div>
+                        <div class="back-example">
+                            // API 调用示例<br>
+                            {<br>
+                            &nbsp;&nbsp;model: "deepseek-chat",<br>
+                            &nbsp;&nbsp;messages: [{role: "user", content: "Hello"}],<br>
+                            &nbsp;&nbsp;temperature: 0.7<br>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon ai">🧠</div>
-                    <div class="card-title">Agent</div>
-                </div>
-                <div class="card-content">
-                    模型自主规划、动态调用工具、跨轮管理状态。
-                    <ul>
-                        <li>状态管理、长期记忆、MCP</li>
-                        <li>Skills、Tool Calling、Tracing</li>
-                        <li>Guardrails、Handoff、错误恢复</li>
-                    </ul>
-                    <span class="tag tag-ai">AI 核心</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon web3">👛</div>
-                    <div class="card-title">钱包</div>
-                </div>
-                <div class="card-content">
-                    管理私钥的工具，不是"存放"资产的地方。
-                    <ul>
-                        <li>助记词 → 私钥 → 地址</li>
-                        <li>私钥 = 资产控制权</li>
-                        <li>泄露 = 资产丢失</li>
-                    </ul>
-                    <span class="tag tag-web3">Web3 基础</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon web3">✍️</div>
-                    <div class="card-title">签名</div>
-                </div>
-                <div class="card-content">
-                    授权一个具体动作，不是"点一下确认"。
-                    <ul>
-                        <li>签名 = 授权</li>
-                        <li>交易 = 执行</li>
-                        <li>不可逆、不可篡改</li>
-                    </ul>
-                    <span class="tag tag-web3">Web3 基础</span>
+            <div class="card-wrapper" data-category="ai" data-keywords="prompt 提示词 上下文 context window 系统指令">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon ai">💬</div>
+                            <div class="card-title">Prompt</div>
+                        </div>
+                        <div class="card-content">
+                            输入给 LLM 的文本，引导模型生成特定输出。
+                            <ul>
+                                <li>上下文窗口：工作内存</li>
+                                <li>系统指令：身份和边界</li>
+                                <li>提示词：任务意图</li>
+                                <li>工具调用：从说话到做事</li>
+                            </ul>
+                            <span class="tag tag-ai">AI 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">Prompt 的四个层面</div>
+                        <div class="back-content">
+                            <strong>1. 上下文窗口</strong> — 模型能"看到"多少历史<br>
+                            <strong>2. 系统指令</strong> — 设置身份、语气、边界<br>
+                            <strong>3. 用户提示</strong> — 当前任务意图<br>
+                            <strong>4. 工具定义</strong> — 模型能调用什么能力
+                            <br><br>
+                            好的 prompt = 明确的角色 + 清晰的任务 + 具体的约束
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon web3">⛽</div>
-                    <div class="card-title">Gas</div>
-                </div>
-                <div class="card-content">
-                    链上执行的计算资源定价。
-                    <ul>
-                        <li>防止滥用、激励矿工</li>
-                        <li>失败也会消耗</li>
-                        <li>价格由市场决定</li>
-                    </ul>
-                    <span class="tag tag-web3">Web3 基础</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon web3">📜</div>
-                    <div class="card-title">智能合约</div>
-                </div>
-                <div class="card-content">
-                    部署在链上的程序，自动执行预定义逻辑。
-                    <ul>
-                        <li>状态公开、执行公开</li>
-                        <li>升级权限可检查</li>
-                        <li>与后端的区别：无法随意修改</li>
-                    </ul>
-                    <span class="tag tag-web3">Web3 核心</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon cross">🔗</div>
-                    <div class="card-title">账户抽象</div>
-                </div>
-                <div class="card-content">
-                    让 AI Agent 可以管理智能账户。
-                    <ul>
-                        <li>ERC-4337 标准</li>
-                        <li>Session Key 限制权限</li>
-                        <li>社交恢复、邮件恢复</li>
-                    </ul>
-                    <span class="tag tag-cross">AI × Web3</span>
+            <div class="card-wrapper" data-category="ai" data-keywords="workflow 工作流 流程 流水线 pipeline">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon ai">⚙️</div>
+                            <div class="card-title">Workflow</div>
+                        </div>
+                        <div class="card-content">
+                            预定义的任务流程，模型是其中一个节点。
+                            <ul>
+                                <li>特点：路径固定、可复现、可调试</li>
+                                <li>适用：流程固定、需要一致性的任务</li>
+                            </ul>
+                            <span class="tag tag-ai">AI 进阶</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">Workflow vs Agent</div>
+                        <div class="back-content">
+                            <strong>Workflow</strong>：路径固定，模型是处理节点<br>
+                            <strong>Agent</strong>：路径动态，模型自主决策
+                            <br><br>
+                            <strong>何时用 Workflow？</strong><br>
+                            • 流程确定、不需要灵活应变<br>
+                            • 需要一致性和可审计性<br>
+                            • 错误处理路径可预定义
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon cross">🛡️</div>
-                    <div class="card-title">Guardrails</div>
-                </div>
-                <div class="card-content">
-                    防止 AI Agent 越权操作。
-                    <ul>
-                        <li>黑名单检查</li>
-                        <li>阈值确认</li>
-                        <li>Human-in-the-loop</li>
-                    </ul>
-                    <span class="tag tag-cross">AI × Web3</span>
+            <div class="card-wrapper" data-category="ai" data-keywords="agent 智能体 自主 规划 工具调用 状态管理">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon ai">🧠</div>
+                            <div class="card-title">Agent</div>
+                        </div>
+                        <div class="card-content">
+                            模型自主规划、动态调用工具、跨轮管理状态。
+                            <ul>
+                                <li>状态管理、长期记忆、MCP</li>
+                                <li>Skills、Tool Calling、Tracing</li>
+                                <li>Guardrails、Handoff、错误恢复</li>
+                            </ul>
+                            <span class="tag tag-ai">AI 核心</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">Agent 核心组件</div>
+                        <div class="back-content">
+                            <strong>状态管理</strong> — 跨轮保持上下文<br>
+                            <strong>Tool Calling</strong> — 调用外部工具<br>
+                            <strong>Guardrails</strong> — 防止越权<br>
+                            <strong>Memory</strong> — 长期记忆存储<br>
+                            <strong>Tracing</strong> — 执行链可视化
+                            <br><br>
+                            Sentinel 就是一个 Agent：解析意图 → 检查权限 → 执行交易
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon cross">🎯</div>
-                    <div class="card-title">Sentinel</div>
-                </div>
-                <div class="card-content">
-                    自然语言驱动 DeFi 操作的完整实现。
-                    <ul>
-                        <li>DeepSeek 意图解析</li>
-                        <li>链上 Guardrails</li>
-                        <li>Sepolia 测试网部署</li>
-                    </ul>
-                    <span class="tag tag-cross">实战项目</span>
+            <div class="card-wrapper" data-category="ai" data-keywords="ai coding vibe coding claude code cursor 编程">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon ai">💻</div>
+                            <div class="card-title">AI Coding</div>
+                        </div>
+                        <div class="card-content">
+                            用 AI 工具辅助编程：代码生成、调试、重构。
+                            <ul>
+                                <li>工具：Claude Code、Cursor、Copilot</li>
+                                <li>擅长：样板代码、单元测试、文档</li>
+                                <li>不擅长：架构设计、业务逻辑决策</li>
+                            </ul>
+                            <span class="tag tag-ai">AI 工具</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">AI Coding 最佳实践</div>
+                        <div class="back-content">
+                            <strong>✅ 适合 AI 做：</strong><br>
+                            • 生成样板代码和测试<br>
+                            • 解释陌生代码库<br>
+                            • 重构和代码风格统一
+                            <br><br>
+                            <strong>❌ 人必须做：</strong><br>
+                            • 架构设计决策<br>
+                            • 业务逻辑定义<br>
+                            • 安全审查和边界情况
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon ai">⚠️</div>
-                    <div class="card-title">AI 输出验证</div>
+            <!-- Web3 Cards -->
+            <div class="card-wrapper" data-category="web3" data-keywords="钱包 wallet 私钥 助记词 mnemonic private key">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">👛</div>
+                            <div class="card-title">钱包</div>
+                        </div>
+                        <div class="card-content">
+                            管理私钥的工具，不是"存放"资产的地方。
+                            <ul>
+                                <li>助记词 → 私钥 → 地址</li>
+                                <li>私钥 = 资产控制权</li>
+                                <li>泄露 = 资产丢失</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">钱包安全要点</div>
+                        <div class="back-content">
+                            <strong>助记词</strong>：12/24 个单词，恢复钱包的唯一方式<br>
+                            <strong>私钥</strong>：控制资产的密钥，绝对不能泄露<br>
+                            <strong>地址</strong>：公开的收款地址，可以分享
+                            <br><br>
+                            ⚠️ AI Agent 不应直接接触私钥！<br>
+                            → 使用 Session Key 限制权限
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    5 大风险必须验证。
-                    <ul>
-                        <li>事实错误：自信编造</li>
-                        <li>引用错误：编造链接</li>
-                        <li>推理漂移：逻辑断裂</li>
-                        <li>执行越权：超出授权</li>
-                        <li>工具误用：错误参数</li>
-                    </ul>
-                    <span class="tag tag-ai">AI 安全</span>
+            </div>
+            
+            <div class="card-wrapper" data-category="web3" data-keywords="签名 signature 签署 授权 authorization">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">✍️</div>
+                            <div class="card-title">签名</div>
+                        </div>
+                        <div class="card-content">
+                            授权一个具体动作，不是"点一下确认"。
+                            <ul>
+                                <li>签名 = 授权</li>
+                                <li>交易 = 执行</li>
+                                <li>不可逆、不可篡改</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">签名 vs 交易</div>
+                        <div class="back-content">
+                            <strong>签名（Off-chain）</strong><br>
+                            • 不消耗 Gas<br>
+                            • 证明你拥有私钥<br>
+                            • 常用于登录、授权
+                            <br><br>
+                            <strong>交易（On-chain）</strong><br>
+                            • 消耗 Gas<br>
+                            • 改变链上状态<br>
+                            • 不可逆
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-wrapper" data-category="web3" data-keywords="gas 燃料 手续费 transaction fee">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">⛽</div>
+                            <div class="card-title">Gas</div>
+                        </div>
+                        <div class="card-content">
+                            链上执行的计算资源定价。
+                            <ul>
+                                <li>防止滥用、激励矿工</li>
+                                <li>失败也会消耗</li>
+                                <li>价格由市场决定</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">Gas 机制详解</div>
+                        <div class="back-content">
+                            <strong>Gas Limit</strong>：最大消耗量<br>
+                            <strong>Gas Price</strong>：每单位价格（Gwei）<br>
+                            <strong>总费用</strong> = Gas Used × Gas Price
+                            <br><br>
+                            <strong>EIP-1559</strong>（以太坊）：<br>
+                            • Base Fee：基础费用（销毁）<br>
+                            • Priority Fee：小费（给矿工）
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-wrapper" data-category="web3" data-keywords="智能合约 smart contract solidity 合约 contract">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">📜</div>
+                            <div class="card-title">智能合约</div>
+                        </div>
+                        <div class="card-content">
+                            部署在链上的程序，自动执行预定义逻辑。
+                            <ul>
+                                <li>状态公开、执行公开</li>
+                                <li>升级权限可检查</li>
+                                <li>与后端的区别：无法随意修改</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 核心</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">SmartAccount.sol</div>
+                        <div class="back-content">
+                            Sentinel 的核心合约：
+                            <br><br>
+                            <strong>功能：</strong><br>
+                            • Owner + Agent 双角色<br>
+                            • 每日支出限额<br>
+                            • 支持 ETH 转账 + Uniswap Swap
+                            <br><br>
+                            <strong>地址：</strong>0x3350...4074<br>
+                            <strong>网络：</strong>Sepolia 测试网
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cross Cards -->
+            <div class="card-wrapper" data-category="cross" data-keywords="账户抽象 account abstraction erc-4337 session key 智能账户">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon cross">🔗</div>
+                            <div class="card-title">账户抽象</div>
+                        </div>
+                        <div class="card-content">
+                            让 AI Agent 可以管理智能账户。
+                            <ul>
+                                <li>ERC-4337 标准</li>
+                                <li>Session Key 限制权限</li>
+                                <li>社交恢复、邮件恢复</li>
+                            </ul>
+                            <span class="tag tag-cross">AI × Web3</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">为什么 AI×Web3 需要 AA？</div>
+                        <div class="back-content">
+                            <strong>问题：</strong>AI Agent 不能直接持有私钥<br>
+                            <strong>解决：</strong>Session Key 给 Agent 临时权限
+                            <br><br>
+                            <strong>Session Key 可以限制：</strong><br>
+                            • 只能调用特定合约<br>
+                            • 只能花固定金额<br>
+                            • 只在时间窗口内有效<br>
+                            • 过期自动失效
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-wrapper" data-category="cross" data-keywords="guardrails 护栏 安全 human in the loop 人工确认">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon cross">🛡️</div>
+                            <div class="card-title">Guardrails</div>
+                        </div>
+                        <div class="card-content">
+                            防止 AI Agent 越权操作。
+                            <ul>
+                                <li>黑名单检查</li>
+                                <li>阈值确认</li>
+                                <li>Human-in-the-loop</li>
+                            </ul>
+                            <span class="tag tag-cross">AI × Web3</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">Sentinel Guardrails</div>
+                        <div class="back-content">
+                            <strong>链下检查：</strong><br>
+                            • 黑名单地址过滤<br>
+                            • 金额阈值确认（>0.01 ETH）
+                            <br><br>
+                            <strong>链上检查：</strong><br>
+                            • Daily Spend Limit<br>
+                            • Owner/Agent 权限分离
+                            <br><br>
+                            任何触发 → 暂停，请求人工确认
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-wrapper" data-category="cross" data-keywords="sentinel 项目 实战 defi uniswap deepseek">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon cross">🎯</div>
+                            <div class="card-title">Sentinel</div>
+                        </div>
+                        <div class="card-content">
+                            自然语言驱动 DeFi 操作的完整实现。
+                            <ul>
+                                <li>DeepSeek 意图解析</li>
+                                <li>链上 Guardrails</li>
+                                <li>Sepolia 测试网部署</li>
+                            </ul>
+                            <span class="tag tag-cross">实战项目</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">Sentinel 架构</div>
+                        <div class="back-content">
+                            <strong>流程：</strong><br>
+                            用户输入（NL）<br>
+                            ↓<br>
+                            DeepSeek 解析意图<br>
+                            ↓<br>
+                            Guardrails 检查<br>
+                            ↓<br>
+                            人工确认（如需要）<br>
+                            ↓<br>
+                            链上执行<br>
+                            ↓<br>
+                            区块浏览器验证
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
             <p>AI × Web3 School — Week 1 学习成果</p>
-            <p>MrtWallace · 2026-05-17</p>
+            <p>MrtWallace · 2026-05-20</p>
         </div>
     </div>
+    
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const cardWrappers = document.querySelectorAll('.card-wrapper');
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            cardWrappers.forEach(wrapper => {
+                const keywords = wrapper.dataset.keywords || '';
+                const title = wrapper.querySelector('.card-title').textContent.toLowerCase();
+                const content = wrapper.querySelector('.card-content').textContent.toLowerCase();
+                const match = keywords.includes(query) || title.includes(query) || content.includes(query);
+                wrapper.classList.toggle('hidden', !match);
+            });
+            updateStats();
+        });
+        
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.dataset.filter;
+                
+                cardWrappers.forEach(wrapper => {
+                    if (filter === 'all' || wrapper.dataset.category === filter) {
+                        wrapper.classList.remove('hidden');
+                    } else {
+                        wrapper.classList.add('hidden');
+                    }
+                });
+                updateStats();
+            });
+        });
+        
+        // Update stats
+        function updateStats() {
+            const visible = document.querySelectorAll('.card-wrapper:not(.hidden)');
+            const aiVisible = document.querySelectorAll('.card-wrapper[data-category="ai"]:not(.hidden)');
+            const web3Visible = document.querySelectorAll('.card-wrapper[data-category="web3"]:not(.hidden)');
+            const crossVisible = document.querySelectorAll('.card-wrapper[data-category="cross"]:not(.hidden)');
+            
+            document.getElementById('aiCount').textContent = aiVisible.length;
+            document.getElementById('web3Count').textContent = web3Visible.length;
+            document.getElementById('crossCount').textContent = crossVisible.length;
+            document.getElementById('totalCount').textContent = visible.length;
+        }
+    </script>
 </body>
 </html>
