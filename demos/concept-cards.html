@@ -280,7 +280,7 @@
                 <div class="stat-label">AI 概念</div>
             </div>
             <div class="stat">
-                <div class="stat-value" style="color: #f093fb;" id="web3Count">4</div>
+                <div class="stat-value" style="color: #f093fb;" id="web3Count">9</div>
                 <div class="stat-label">Web3 概念</div>
             </div>
             <div class="stat">
@@ -288,7 +288,7 @@
                 <div class="stat-label">交叉方向</div>
             </div>
             <div class="stat">
-                <div class="stat-value" style="color: #00f2fe;" id="totalCount">12</div>
+                <div class="stat-value" style="color: #00f2fe;" id="totalCount">17</div>
                 <div class="stat-label">总计</div>
             </div>
         </div>
@@ -468,50 +468,183 @@
             </div>
             
             <!-- Web3 Cards -->
-            <div class="card-wrapper" data-category="web3" data-keywords="钱包 wallet 私钥 助记词 mnemonic private key">
+            <div class="card-wrapper" data-category="web3" data-keywords="钱包 wallet 私钥 助记词 mnemonic private key metaMask">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front">
                         <div class="card-header">
                             <div class="card-icon web3">👛</div>
-                            <div class="card-title">钱包</div>
+                            <div class="card-title">钱包 Wallet</div>
                         </div>
                         <div class="card-content">
-                            管理私钥的工具，不是"存放"资产的地方。
+                            管理区块链密钥、与 dApp 交互的软件/硬件工具。
                             <ul>
-                                <li>助记词 → 私钥 → 地址</li>
-                                <li>私钥 = 资产控制权</li>
-                                <li>泄露 = 资产丢失</li>
+                                <li>资产永远在链上，钱包只存钥匙</li>
+                                <li>MetaMask / OKX Wallet = Web3 数字网银</li>
                             </ul>
                             <span class="tag tag-web3">Web3 基础</span>
                         </div>
                         <span class="flip-hint">点击翻转 →</span>
                     </div>
                     <div class="card-back">
-                        <div class="back-title">钱包安全要点</div>
+                        <div class="back-title">钱包的本质</div>
                         <div class="back-content">
-                            <strong>助记词</strong>：12/24 个单词，恢复钱包的唯一方式<br>
-                            <strong>私钥</strong>：控制资产的密钥，绝对不能泄露<br>
-                            <strong>地址</strong>：公开的收款地址，可以分享
+                            钱包 ≠ 存放资产的地方<br>
+                            钱包 = 管理私钥 + 展示资产 + 提供签名
                             <br><br>
-                            ⚠️ AI Agent 不应直接接触私钥！<br>
+                            ⚠️ 常见误区：以为币"存在"钱包软件里<br>
+                            实际：资产在区块链上，钱包只有钥匙
+                            <br><br>
+                            💡 AI Agent 不应直接接触私钥<br>
                             → 使用 Session Key 限制权限
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="card-wrapper" data-category="web3" data-keywords="助记词 seed phrase 恢复词 mnemonic 12词 24词">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">🔑</div>
+                            <div class="card-title">助记词 Seed Phrase</div>
+                        </div>
+                        <div class="card-content">
+                            12-24 个随机英文单词，生成所有账户和私钥的"母钥匙"。
+                            <ul>
+                                <li>输入任何兼容钱包即可恢复全部资产</li>
+                                <li>永远不要截屏、拍照或存联网设备</li>
+                                <li>最安全：线下手抄物理存储</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 安全</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">助记词 = 母钥匙</div>
+                        <div class="back-content">
+                            助记词 → 派生 → 所有私钥 → 所有地址
+                            <br><br>
+                            🚨 泄露 = 所有资产瞬间清零<br>
+                            黑客用自动化脚本几秒搬空
+                            <br><br>
+                            ❌ 截屏 / 拍照 / 备忘录<br>
+                            ✅ 手抄纸上，锁在保险柜
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-wrapper" data-category="web3" data-keywords="私钥 private key 签名 十六进制 0x">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">🔐</div>
+                            <div class="card-title">私钥 Private Key</div>
+                        </div>
+                        <div class="card-content">
+                            64 位十六进制字符串，证明地址所有权并对交易签名。
+                            <ul>
+                                <li>从助记词派生的"分钥匙"</li>
+                                <li>对应某一个具体地址</li>
+                                <li>私钥给出去 = 永久失去控制权</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 安全</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">私钥的真相</div>
+                        <div class="back-content">
+                            区块链只认私钥不认人<br>
+                            私钥 = 地址的唯一控制权
+                            <br><br>
+                            格式：0x4c2a...3f9e（64位十六进制）
+                            <br><br>
+                            🚨 借给朋友做测试网任务 = 永久失去<br>
+                            → 没有"撤销"，没有客服
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-wrapper" data-category="web3" data-keywords="地址 address 0x 收款 银行账号">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">📍</div>
+                            <div class="card-title">地址 Address</div>
+                        </div>
+                        <div class="card-content">
+                            由私钥计算生成的公开字符串，区块链上的"银行账号"。
+                            <ul>
+                                <li>以太坊：0x 开头，42 字符</li>
+                                <li>可以公开分享，用于收款</li>
+                                <li>复制后务必核对前四位和后四位</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">地址安全</div>
+                        <div class="back-content">
+                            地址 = 公开的收付款码<br>
+                            私钥 → 算法 → 地址（不可逆）
+                            <br><br>
+                            ⚠️ 剪贴板恶意软件：<br>
+                            复制地址时悄悄替换成黑客地址<br>
+                            → 复制后必须肉眼核对前后四位
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="card-wrapper" data-category="web3" data-keywords="签名 signature 签署 授权 authorization">
+            <div class="card-wrapper" data-category="web3" data-keywords="签名 signature 签署 授权 authorization 盲签 blind signing">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front">
                         <div class="card-header">
                             <div class="card-icon web3">✍️</div>
-                            <div class="card-title">签名</div>
+                            <div class="card-title">签名 Signature</div>
                         </div>
                         <div class="card-content">
-                            授权一个具体动作，不是"点一下确认"。
+                            通过私钥证明"我确认并同意了某项操作"。
                             <ul>
-                                <li>签名 = 授权</li>
-                                <li>交易 = 执行</li>
+                                <li>签名（Off-chain）：不花 Gas，证明身份</li>
+                                <li>交易（On-chain）：花 Gas，改变链上状态</li>
+                                <li>签名 = 白纸黑字按指纹，不可伪造</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 安全</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">签名的危险</div>
+                        <div class="back-content">
+                            登录 Uniswap 弹出 "Sign Message"<br>
+                            → 不花 Gas，只证明地址所有权
+                            <br><br>
+                            🚨 盲签（Blind Signing）极度危险：<br>
+                            钓鱼网站弹出乱码要求签名<br>
+                            → 签了 = 把钱包控制权交出去
+                            <br><br>
+                            ⚠️ 永远不要签你看不懂的东西
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-wrapper" data-category="web3" data-keywords="交易 transaction 转账 合约调用 状态改变">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">💸</div>
+                            <div class="card-title">交易 Transaction</div>
+                        </div>
+                        <div class="card-content">
+                            在区块链上引起状态改变的行为：转账、调用合约、部署应用。
+                            <ul>
+                                <li>必须广播到网络并被打包进区块</li>
+                                <li>失败也扣 Gas（算力已消耗）</li>
                                 <li>不可逆、不可篡改</li>
                             </ul>
                             <span class="tag tag-web3">Web3 基础</span>
@@ -519,85 +652,155 @@
                         <span class="flip-hint">点击翻转 →</span>
                     </div>
                     <div class="card-back">
-                        <div class="back-title">签名 vs 交易</div>
+                        <div class="back-title">交易的本质</div>
                         <div class="back-content">
-                            <strong>签名（Off-chain）</strong><br>
-                            • 不消耗 Gas<br>
-                            • 证明你拥有私钥<br>
-                            • 常用于登录、授权
+                            交易 ≠ 只是转账<br>
+                            交易 = 任何链上状态改变
                             <br><br>
-                            <strong>交易（On-chain）</strong><br>
-                            • 消耗 Gas<br>
-                            • 改变链上状态<br>
-                            • 不可逆
+                            类型：<br>
+                            • ETH 转账<br>
+                            • 调用合约函数<br>
+                            • 部署新合约<br>
+                            • Token approve
+                            <br><br>
+                            🚨 失败也扣 Gas！节点已执行计算
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="card-wrapper" data-category="web3" data-keywords="gas 燃料 手续费 transaction fee">
+            <div class="card-wrapper" data-category="web3" data-keywords="gas 燃料 手续费 transaction fee gwei 矿工">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front">
                         <div class="card-header">
                             <div class="card-icon web3">⛽</div>
-                            <div class="card-title">Gas</div>
+                            <div class="card-title">燃气费 Gas</div>
                         </div>
                         <div class="card-content">
-                            链上执行的计算资源定价。
+                            支付给验证者的手续费，补偿处理交易和执行合约的算力。
                             <ul>
-                                <li>防止滥用、激励矿工</li>
-                                <li>失败也会消耗</li>
-                                <li>价格由市场决定</li>
+                                <li>总费用 = Gas Used × Gas Price</li>
+                                <li>EIP-1559：Base Fee（销毁）+ Priority Fee（小费）</li>
+                                <li>失败也扣 Gas（算力已消耗）</li>
                             </ul>
                             <span class="tag tag-web3">Web3 基础</span>
                         </div>
                         <span class="flip-hint">点击翻转 →</span>
                     </div>
                     <div class="card-back">
-                        <div class="back-title">Gas 机制详解</div>
+                        <div class="back-title">Gas 常见误区</div>
                         <div class="back-content">
-                            <strong>Gas Limit</strong>：最大消耗量<br>
-                            <strong>Gas Price</strong>：每单位价格（Gwei）<br>
-                            <strong>总费用</strong> = Gas Used × Gas Price
+                            测试网用 Sepolia ETH（免费领）
                             <br><br>
-                            <strong>EIP-1559</strong>（以太坊）：<br>
-                            • Base Fee：基础费用（销毁）<br>
-                            • Priority Fee：小费（给矿工）
+                            🚨 Gas 设太低 = 交易卡死<br>
+                            没有节点愿意打包，挂起几小时甚至几天
+                            <br><br>
+                            🚨 Gas 设太高 = 浪费钱<br>
+                            建议用动态估算（EIP-1559）
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="card-wrapper" data-category="web3" data-keywords="智能合约 smart contract solidity 合约 contract">
+            <div class="card-wrapper" data-category="web3" data-keywords="智能合约 smart contract solidity 合约 contract 审计">
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front">
                         <div class="card-header">
                             <div class="card-icon web3">📜</div>
-                            <div class="card-title">智能合约</div>
+                            <div class="card-title">智能合约 Smart Contract</div>
                         </div>
                         <div class="card-content">
-                            部署在链上的程序，自动执行预定义逻辑。
+                            部署在链上、不可篡改且自动执行的代码程序。
                             <ul>
-                                <li>状态公开、执行公开</li>
-                                <li>升级权限可检查</li>
-                                <li>与后端的区别：无法随意修改</li>
+                                <li>满足触发条件 → 严格执行预设结果</li>
+                                <li>状态公开、执行公开、可审计</li>
+                                <li>与后端的区别：部署后无法随意修改</li>
                             </ul>
                             <span class="tag tag-web3">Web3 核心</span>
                         </div>
                         <span class="flip-hint">点击翻转 →</span>
                     </div>
                     <div class="card-back">
-                        <div class="back-title">SmartAccount.sol</div>
+                        <div class="back-title">合约的两面</div>
                         <div class="back-content">
-                            Sentinel 的核心合约：
+                            例：存 1 ETH 满 30 天 → 自动释放 + 5% 利息
                             <br><br>
-                            <strong>功能：</strong><br>
+                            Sentinel SmartAccount.sol：<br>
                             • Owner + Agent 双角色<br>
                             • 每日支出限额<br>
-                            • 支持 ETH 转账 + Uniswap Swap
+                            • 地址：0x3350...4074
                             <br><br>
-                            <strong>地址：</strong>0x3350...4074<br>
-                            <strong>网络：</strong>Sepolia 测试网
+                            🚨 代码不可篡改，但人会犯错<br>
+                            未审计合约 = 可能有漏洞/后门（Rug Pull）
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-wrapper" data-category="web3" data-keywords="测试网 testnet sepolia holesky faucet 领水">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">🧪</div>
+                            <div class="card-title">测试网 Testnet</div>
+                        </div>
+                        <div class="card-content">
+                            供开发者测试功能的实验性区块链，逻辑与主网一致但无真实价值。
+                            <ul>
+                                <li>以太坊：Sepolia / Holesky</li>
+                                <li>测试币通过 Faucet 免费领取</li>
+                                <li>学习和实验应先在测试网完成</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 基础</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">测试网注意事项</div>
+                        <div class="back-content">
+                            Sentinel 部署在 Sepolia 测试网
+                            <br><br>
+                            🚨 测试币不能变现！<br>
+                            骗子说"高价出售测试币"= 诈骗<br>
+                            测试币只通过 Faucet 免费领取
+                            <br><br>
+                            ✅ 所有实验先在测试网跑通<br>
+                            → 再考虑主网部署
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-wrapper" data-category="web3" data-keywords="授权 approval allow allowance 无限额度 approve">
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <div class="card-icon web3">⚠️</div>
+                            <div class="card-title">授权 Approval</div>
+                        </div>
+                        <div class="card-content">
+                            与合约交互前，先授予合约"划走代币的额度"。
+                            <ul>
+                                <li>类似给商户开"副卡额度"</li>
+                                <li>Unlimited Approval = 无限额度</li>
+                                <li>恶意合约可随时刷光授权代币</li>
+                            </ul>
+                            <span class="tag tag-web3">Web3 安全</span>
+                        </div>
+                        <span class="flip-hint">点击翻转 →</span>
+                    </div>
+                    <div class="card-back">
+                        <div class="back-title">授权的陷阱</div>
+                        <div class="back-content">
+                            卖币前必须先 approve 合约<br>
+                            → 合约获得"划走额度"
+                            <br><br>
+                            🚨 Unlimited Approval 危险：<br>
+                            恶意合约随时可以刷光所有该代币<br>
+                            不需要再次确认！
+                            <br><br>
+                            ✅ 只授权需要的数量<br>
+                            ✅ 用完立刻 revoke
                         </div>
                     </div>
                 </div>
