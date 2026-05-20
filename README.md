@@ -42,7 +42,7 @@ templates/              # 日记和任务模板
 - [ ] AI 基础概念卡片 (10pts)
 - [ ] Learning Agent Setup (20pts)
 - [ ] AI 可交互学习产物 (30pts)
-- [ ] Web3 基础概念卡片 (10pts)
+- [x] Web3 基础概念卡片 (10pts)
 - [ ] 测试网交易 (20pts)
 - [ ] 部署/调用最小合约 (30pts)
 - [ ] EOA vs 智能账户 vs 多签对比 (30pts)
